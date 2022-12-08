@@ -1,4 +1,3 @@
-# deals/tests/tests_models.py
 from django.test import TestCase
 
 from deals.models import Task
@@ -8,13 +7,6 @@ class TaskModelTest(TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        # Создаём тестовую запись в БД и
-        # сохраняем ее в качестве переменной класса
-        # Не указываем значение slug, ждем, что при создании
-        # оно создастся автоматически из title.
-        # А title сделаем таким, чтобы после транслитерации он стал
-        # более 100 символов (буква "ж" транслитерируется в два символа: "zh")
-        #
         cls.task = Task.objects.create(
             title='Ж'*100,
             text='Тестовый текст'
